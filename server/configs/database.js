@@ -8,7 +8,7 @@ const mongoose = require("mongoose")
 // let uri = uriMap[selectedEnv];
 
 const connection = async () => {
-    return mongoose.connect("mongodb+srv://robosealerdev:3P6zyaEuiRhCnT6m@robosealerdev.eb1vyhp.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
+    return mongoose.connect("mongodb+srv://robosealerdev:3P6zyaEuiRhCnT6m@robosealerdev.eb1vyhp.mongodb.net/?retryWrites=true&w=majority")
         .then(() => {
             // console.log(`Connected to MongoDB database successfully on ${selectedEnv} environment!`);
             console.log(`Connected to MongoDB database successfully on dev environment!`);
