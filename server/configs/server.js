@@ -7,8 +7,8 @@ const server = http.createServer(app);
 //     console.log(`Server is up and runing on port ${process.env.PORT}!`)
 // })
 
-server.listen(5001, () => {
-    console.log(`Server is up and runing on port 5001`)
+server.listen(4000, () => {
+    console.log(`Server is up and runing on port 4000`)
 })
 
 
