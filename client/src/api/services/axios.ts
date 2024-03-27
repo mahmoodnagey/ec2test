@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 // import { store } from "../../redux/store";
 // import i18n from "../../i18n";
 
-const BASE_END_POINT = "http://54.174.36.110:4000/api/v1/";
+const BASE_END_POINT = "http://54.174.36.110/api/v1/";
 
 const baseURL = BASE_END_POINT;
 const Axios = axios.create({ baseURL });
