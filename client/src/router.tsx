@@ -33,8 +33,8 @@ export const allRouters = createBrowserRouter([
 
     children: [
       {
-        index: true,
-        element: <Login />,
+        path: "/",
+        element: <Home />,
       },
       {
         path: "/home",
@@ -171,5 +171,9 @@ export const allRouters = createBrowserRouter([
         element: <RawData />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);

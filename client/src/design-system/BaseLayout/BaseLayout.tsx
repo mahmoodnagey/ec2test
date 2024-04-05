@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Box, Flex } from "@mantine/core";
@@ -9,6 +9,8 @@ import { RootState } from "../../../store/store";
 export default function BaseLayout() {
   const mobile = useIsMobile();
   const isUser = useSelector((state: RootState) => state.auth.token);
+
+  if (!isUser) return <Navigate to="/login" />;
 
   return (
     <>

@@ -15,7 +15,7 @@ import {
 import ApiRoutes from "../../../api/services/api-routes";
 import { useState } from "react";
 import { addAdmin } from "../../slice/adminsListSlice";
-import toast from "react-simple-toasts";
+import Toast from "../../../design-system/components/Toast/Toast";
 
 export interface Role {
   _id: string;
@@ -59,40 +59,16 @@ export default function AddAdminAccount() {
           dispatch(addAdmin(res.data.result));
           resetForm();
           formik.setFieldValue("permission", { _id: null, name: null }); // Empty the Select input after form submission
-          toast(
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              Admin Account Added Successfully
-            </div>,
-            {
-              position: "top-right",
-            }
-          );
+          Toast({
+            status: "success",
+            text: "Admin Account Added Successfully",
+          });
         })
         .catch((error) => {
-          toast(
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              {error.response.data.error}
-            </div>,
-            {
-              position: "top-right",
-            }
-          );
+          Toast({
+            status: "error",
+            text: error.response.data.error,
+          });
         });
     },
   });

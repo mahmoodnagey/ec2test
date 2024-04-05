@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../src/auth/slice/user-slice";
 import menuReducer from "../src/design-system/components/Header/slice/menuSlice";
 import settingModalReducer from "../src/design-system/components/SettingControl/slice/settingModalSlice";
 import authReducer from "../src/auth/slice/authSlice";
@@ -18,7 +17,6 @@ export const store = configureStore({
     settingModal: settingModalReducer,
     showRoleModal,
     editRoleModal,
-    user: userReducer,
     auth: authReducer,
     rolesList,
     adminList,

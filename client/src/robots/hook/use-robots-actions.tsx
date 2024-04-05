@@ -6,8 +6,8 @@ import {
   getRobot,
   updateRobot,
 } from "../slice/thunk";
-import toast from "react-simple-toasts";
 import { closeEditRobotModal } from "../slice/robot-slice";
+import Toast from "../../design-system/components/Toast/Toast";
 
 export const useRobotsActions = () => {
   const dispatch: any = useDispatch();
@@ -23,89 +23,34 @@ export const useRobotsActions = () => {
   const addRobot = (robot: any, resetForm: any) => {
     dispatch(createRobot(robot)).then((resultAction: any) => {
       if (createRobot.fulfilled.match(resultAction)) {
-        toast(
-          <>
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              Robot Added Successfully
-            </div>
-          </>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "success",
+          text: "Robot Added Successfully",
+        });
+
         resetForm();
       } else if (createRobot.rejected.match(resultAction)) {
-        toast(
-          <>
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              {resultAction.error.message}
-            </div>
-          </>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "error",
+          text: resultAction.error.message,
+        });
       }
     });
   };
   const editRobot = (robot: any, robotId: any, resetForm: any) => {
     dispatch(updateRobot({ robot, robotId })).then((resultAction: any) => {
       if (updateRobot.fulfilled.match(resultAction)) {
-        toast(
-          <>
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              Robot Updated Successfully
-            </div>
-          </>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "success",
+          text: "Robot Updated Successfully",
+        });
         dispatch(closeEditRobotModal());
         resetForm();
       } else if (updateRobot.rejected.match(resultAction)) {
-        toast(
-          <>
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              {resultAction.error.message}
-            </div>
-          </>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "error",
+          text: resultAction.error.message,
+        });
       }
     });
   };

@@ -14,10 +14,10 @@ import { useEffect, useState } from "react";
 import { GetService, PutService } from "../../../api/services/requests-service";
 import ApiRoutes from "../../../api/services/api-routes";
 import { editAdmin } from "../../slice/adminsListSlice";
-import toast from "react-simple-toasts";
 import { useFormik } from "formik";
 import { IconX } from "@tabler/icons-react";
 import { FormValues, Role } from "../AddAdminAccount/AddAdminAccount";
+import Toast from "../../../design-system/components/Toast/Toast";
 
 export default function EditAdminModal({ admin }: { admin: any }) {
   const dispatch: any = useDispatch();
@@ -61,40 +61,16 @@ export default function EditAdminModal({ admin }: { admin: any }) {
           resetForm();
           dispatch(closeEditAdminModal());
           formik.setFieldValue("permission", { _id: null, name: null }); // Empty the Select input after form submission
-          toast(
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              Admin Account Updated Successfully
-            </div>,
-            {
-              position: "top-right",
-            }
-          );
+          Toast({
+            status: "success",
+            text: "Admin Account Updated Successfully",
+          });
         })
         .catch((error) => {
-          toast(
-            <div
-              style={{
-                backgroundColor: "#00AFAF",
-                padding: "1rem",
-                color: "white",
-                border: "none",
-                borderRadius: ".5rem",
-              }}
-            >
-              {error.response.data.error}
-            </div>,
-            {
-              position: "top-right",
-            }
-          );
+          Toast({
+            status: "error",
+            text: error.response.data.error,
+          });
         });
       values.permission._id === admin.permission._id
         ? undefined

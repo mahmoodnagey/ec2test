@@ -13,9 +13,9 @@ import {
   Title,
 } from "@mantine/core";
 import { usePrimaryColorHex } from "../../../design-system/hooks/use-primary-color";
-import toast from "react-simple-toasts";
 import { addRole } from "../../slice/rolesListSlice";
 import { useDispatch } from "react-redux";
+import Toast from "../../../design-system/components/Toast/Toast";
 
 export default function AddUserRoles() {
   const [userPermissionList, setUserPermissionList] = useState<any>([]);
@@ -58,43 +58,19 @@ export default function AddUserRoles() {
       },
     })
       .then((res) => {
-        toast(
-          <div
-            style={{
-              backgroundColor: "#00AFAF",
-              padding: "1rem",
-              color: "white",
-              border: "none",
-              borderRadius: ".5rem",
-            }}
-          >
-            Role Added Successfully
-          </div>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "success",
+          text: "Role Added Successfully",
+        });
         setRoleNameValue("");
         setGroupValue([]);
         dispatch(addRole(res.data.result));
       })
       .catch((error) => {
-        toast(
-          <div
-            style={{
-              backgroundColor: "#00AFAF",
-              padding: "1rem",
-              color: "white",
-              border: "none",
-              borderRadius: ".5rem",
-            }}
-          >
-            {error.response.data.error}
-          </div>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "error",
+          text: error.response.data.error,
+        });
       });
   };
 

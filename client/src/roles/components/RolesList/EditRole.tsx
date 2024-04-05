@@ -16,12 +16,12 @@ import { usePrimaryColorHex } from "../../../design-system/hooks/use-primary-col
 import { useEffect, useState } from "react";
 import { GetService, PutService } from "../../../api/services/requests-service";
 import ApiRoutes from "../../../api/services/api-routes";
-import toast from "react-simple-toasts";
 import { IconX } from "@tabler/icons-react";
 import { editRole } from "../../slice/rolesListSlice";
 import { closeEditRoleModal } from "../../slice/edit-role-modal-slice";
 import { RoleType } from "../../types";
 import { objectsAreEqual } from "../../../design-system/utils";
+import Toast from "../../../design-system/components/Toast/Toast";
 
 export default function EditRole({ role }: { role: RoleType }) {
   const [adminPermissionList, setAdminPermissionList] = useState<any>({});
@@ -90,22 +90,11 @@ export default function EditRole({ role }: { role: RoleType }) {
       },
     })
       .then((res) => {
-        toast(
-          <div
-            style={{
-              backgroundColor: "#00AFAF",
-              padding: "1rem",
-              color: "white",
-              border: "none",
-              borderRadius: ".5rem",
-            }}
-          >
-            Role Updated Successfully
-          </div>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "success",
+          text: "Role Updated Successfully",
+        });
+
         setRoleNameValue("");
         setGroupValue([]);
         dispatch(editRole(res.data.result));
@@ -113,22 +102,10 @@ export default function EditRole({ role }: { role: RoleType }) {
         dispatch(closeEditRoleModal());
       })
       .catch((error) => {
-        toast(
-          <div
-            style={{
-              backgroundColor: "#00AFAF",
-              padding: "1rem",
-              color: "white",
-              border: "none",
-              borderRadius: ".5rem",
-            }}
-          >
-            {error.response.data.error}
-          </div>,
-          {
-            position: "top-right",
-          }
-        );
+        Toast({
+          status: "error",
+          text: error.response.data.error,
+        });
       });
   };
   return (

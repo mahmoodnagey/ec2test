@@ -54,22 +54,7 @@ export const deleteRoleById = createAsyncThunk<any, string>(
           _id: roleId,
         },
       });
-      // toast(
-      //   <div
-      //     style={{
-      //       backgroundColor: "#00AFAF",
-      //       padding: "1rem",
-      //       color: "white",
-      //       border: "none",
-      //       borderRadius: ".5rem",
-      //     }}
-      //   >
-      //     {`Hello ${values.email}.`}
-      //   </div>,
-      //   {
-      //     position: "top-right",
-      //   }
-      // )
+
       const state = getState() as RootState;
       const roles = state.rolesList.roles.filter((role) => role._id !== roleId);
 

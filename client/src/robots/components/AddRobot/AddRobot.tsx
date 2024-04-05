@@ -56,7 +56,7 @@ export default function AddRobot() {
                 clearable
                 label="Organization"
                 name="org"
-                placeholder="Pick Role"
+                placeholder="Pick Organization"
                 data={orgs.map((org: OrganizationType) => org.name)}
                 onChange={(value) => {
                   const selectedOrg = orgs.find(

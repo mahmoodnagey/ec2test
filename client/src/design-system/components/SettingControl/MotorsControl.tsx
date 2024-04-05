@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text, TextInput } from "@mantine/core";
+import { Button, Flex, Paper, Text, TextInput } from "@mantine/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
@@ -15,8 +15,6 @@ export default function MotorsControl() {
       speed: Yup.number().required("Required"),
     }),
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      // resetForm();
       openModal({
         text: "Are you sure to save changes",
         onConfirm: () => {
@@ -45,9 +43,9 @@ export default function MotorsControl() {
         </Flex>
         <Flex direction="column" gap="sm" mt="md">
           <Flex wrap="wrap" c="green.6">
-            <Box variant="light" bg="green.1" p=".2rem" tt="capitalize">
+            <Paper radius="sm" bg="green.1" p=".2rem" tt="capitalize">
               The robot will stop and restart with any change made.
-            </Box>
+            </Paper>
           </Flex>
 
           <Button variant="light" size="xs" type="submit">

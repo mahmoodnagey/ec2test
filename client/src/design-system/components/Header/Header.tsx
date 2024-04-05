@@ -11,7 +11,6 @@ import {
   Text,
   ActionIcon,
 } from "@mantine/core";
-
 import classes from "./header.module.scss";
 import Sidebar from "../Sidebar";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +23,7 @@ import useIsMobile from "../../hooks/use-is-mobile";
 import { openSettingModal } from "../SettingControl/slice/settingModalSlice";
 import SettingControl from "../SettingControl/SettingControl";
 import { logout } from "../../../auth/slice/authSlice";
+import { openModal } from "../ConfirmModal/ConfirmModal";
 
 export default function Header() {
   const opened = useSelector((state: RootState) => state.menu.status);
@@ -57,9 +57,13 @@ export default function Header() {
               </ActionIcon>
               <Button
                 onClick={() => {
-                  dispatch(logout());
-
-                  navigate("/");
+                  openModal({
+                    text: "Are you sure you want to log out?",
+                    onConfirm: () => {
+                      dispatch(logout());
+                      navigate("/login");
+                    },
+                  });
                 }}
               >
                 <Flex align="center" gap=".4rem">
@@ -113,10 +117,15 @@ export default function Header() {
             <Button
               ml="sm"
               onClick={() => {
-                dispatch(logout());
-                dispatch(close());
+                openModal({
+                  text: "Are you sure you want to log out?",
+                  onConfirm: () => {
+                    dispatch(logout());
+                    dispatch(close());
 
-                navigate("/");
+                    navigate("/login");
+                  },
+                });
               }}
             >
               <Flex align="center" gap=".4rem">
