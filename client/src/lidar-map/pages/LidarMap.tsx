@@ -7,7 +7,7 @@ import useIsMobile from "../../design-system/hooks/use-is-mobile";
 // import RobotPosition from "../../rosbridge/RobotPosition";
 // import Teleoperation from "../../rosbridge/Teleoperation";
 import RosbridgeConnection from "../../rosbridge/RosbridgeConnection";
-import ImageStream from "../../rosbridge/ImageStream";
+// igit mport ImageStream from "../../rosbridge/ImageStream";
 
 export default function LidarMap() {
   const mobile = useIsMobile();
@@ -33,7 +33,7 @@ export default function LidarMap() {
         </Flex>
         <RosbridgeConnection />
         {/* <RobotPosition /> */}
-        <ImageStream />
+        {/* <ImageStream /> */}
         {/* <Teleoperation /> */}
       </Paper>
     </>
