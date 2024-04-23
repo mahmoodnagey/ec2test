@@ -17,17 +17,26 @@ export default function LidarMap() {
         <title>LidarMap</title>
       </Helmet>
       <MainTitle title="Lidar Map" />
-      <Paper shadow="md" radius="md" p="md" mb="xl">
+      <Paper
+        shadow="md"
+        radius="md"
+        // p="md"
+        // mb="xl"
+      >
         <Flex
           justify="space-between"
           direction={mobile ? "column" : "row"}
           gap="md"
-          my="lg"
+          // my="lg"
         >
-          <Flex w={mobile ? "100%" : "48%"}>
+          <Flex
+          // w={mobile ? "100%" : "48%"}
+          >
             <KeyValueCard label="Voltage" value={"16 " + "V"} />
           </Flex>
-          <Flex w={mobile ? "100%" : "48%"}>
+          <Flex
+          // w={mobile ? "100%" : "48%"}
+          >
             <KeyValueCard label="Current" value="50 A" />
           </Flex>
         </Flex>

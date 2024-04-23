@@ -4,7 +4,7 @@ import Config from "./rosbridgeConfig";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ros = new ROSLIB.Ros({
-  url: `ws://${Config.ROSBRIDGE_SERVER_IP}:${Config.ROSBRIDGE_SERVER_PORT}`,
+  url: `${Config.ROSBRIDGE_SERVER_IP}:${Config.ROSBRIDGE_SERVER_PORT}`,
 });
 
 const RosbridgeConnection = () => {
