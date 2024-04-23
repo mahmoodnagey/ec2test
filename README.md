@@ -1,4 +1,5 @@
 ** How to deploy a fullstack app on AWS?
+----------------------------------------
   1. Login / Signup to AWS.
   2. Go to "console":
   console.aws.amazon.com/console
@@ -96,12 +97,26 @@
   type ":wq!" to save
   run this commande "sudo nginx -t" to check saved successfully
   "sudo service nginx restart" restart nginx
-  ----------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
 
 ** setup vpn on the server:
+---------------------------
   1. run this command to install husarnet "wget https://install.husarnet.com/tgz/husarnet-latest-amd64.tar".
   2. then this command "sudo tar --directory=/ --no-same-owner --dereference -xf husarnet-latest-amd64.tar".
   3. to test, you can run "husarnet status".
   4. To join to the vpn network run "husarnet join fc94:b01d:1803:8dd8:b293:5c7d:7639:932a/TT2vHX3qv3r3J925oroJcL ubuntu" where ubuntu the user name of server in appears in terminal ubuntu@ip-..
   5. to confirm connecting to certain vpn network and device running robot "ping6 fc94:b376:aa06:24af:52b8:62c2:d295:1be1"
 
+--------------------------------------------------------------------------------------
+
+** important ubuntu commands may need to use in server terminal:
+----------------------------------------------------------------
+- curl abdxi:9090  (test rosbridge connection, where "abdxi" refers to ip of the device which running rosbridge)
+- pm2 logs 0  (get the logs of the first app running by pm2)
+- pm2 start server.js --name robosealers (start a new app by pm2)
+- pm2 stop all (stop all applications running by pm2)
+- pm2 delete all (delete all applications running by pm2)
+- pm2 list (list all applications on pm2)
+- sudo service nginx restart  (Restart nginx server)
+- rm -rf ec2test  (Delete a directory in the directory I am in)
